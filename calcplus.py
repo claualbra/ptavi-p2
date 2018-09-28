@@ -23,6 +23,13 @@ class CalculadoraHija(Calculadora):
 			multiplicacion *= i
 		return multiplicacion
 
+	def div(op1):
+		""" Function to split the operands """
+		division = op1[0]
+		for i in op1[1:]:
+			division /= i
+		return division
+
 
 
 with open('calculadora.txt') as fichero:
@@ -36,6 +43,8 @@ with open('calculadora.txt') as fichero:
 			result = CalculadoraHija.minus(op1)
 		elif lista_calc[0] == "multiplica":
 			result = CalculadoraHija.mult(op1)
+		elif lista_calc[0] == "divide":
+			result = CalculadoraHija.div(op1)
 		else:
 			sys.exit('Operación sólo puede ser sumar o restar.')
 		

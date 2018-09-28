@@ -10,10 +10,19 @@ class Calculadora():
 
 	def minus(op1):
 		""" Function to substract the operands """
-		resta = 0
-		for i in op1:
+		resta = op1[0]
+		for i in op1[1:]:
 			resta -= i
 		return resta
+
+class CalculadoraHija(Calculadora):
+	def mult(op1):
+		""" Function to multiply the operands. Ops have to be ints """
+		multiplicacion = 1
+		for i in op1:
+			multiplicacion *= i
+		return multiplicacion
+
 
 
 with open('calculadora.txt') as fichero:
@@ -22,9 +31,11 @@ with open('calculadora.txt') as fichero:
 		op1 = list(map(int, lista_calc[1:]))
 
 		if lista_calc[0] == "suma":
-			result = Calculadora.plus(op1)
+			result = CalculadoraHija.plus(op1)
 		elif lista_calc[0] == "resta":
-			result = Calculadora.minus(op1)
+			result = CalculadoraHija.minus(op1)
+		elif lista_calc[0] == "multiplica":
+			result = CalculadoraHija.mult(op1)
 		else:
 			sys.exit('Operación sólo puede ser sumar o restar.')
 		

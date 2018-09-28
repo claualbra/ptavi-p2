@@ -44,7 +44,10 @@ with open('calculadora.txt') as fichero:
 		elif lista_calc[0] == "multiplica":
 			result = CalculadoraHija.mult(op1)
 		elif lista_calc[0] == "divide":
-			result = CalculadoraHija.div(op1)
+			try:
+				result = CalculadoraHija.div(op1)
+			except ZeroDivisionError:
+				sys.exit("Division by zero is not allowed")
 		else:
 			sys.exit('Operación sólo puede ser sumar o restar.')
 		

@@ -31,9 +31,9 @@ class CalculadoraHija(Calculadora):
 		return division
 
 
-
-with open('calculadora.txt') as fichero:
-	for line in fichero:
+if __name__ == "__main__":
+	fd = open(sys.argv[1], mode='r', encoding='utf-8')
+	for line in fd.readlines():
 		lista_calc= line.split(",")
 		op1 = list(map(int, lista_calc[1:]))
 
@@ -47,8 +47,8 @@ with open('calculadora.txt') as fichero:
 			try:
 				result = CalculadoraHija.div(op1)
 			except ZeroDivisionError:
-				sys.exit("Division by zero is not allowed")
+				result = "Division by zero is not allowed"
 		else:
-			sys.exit('Operación sólo puede ser sumar o restar.')
+			result = 'Operación sólo puede ser sumar o restar.'
 		
 		print(result)

@@ -8,6 +8,7 @@ class Clase(ClaseMadre):
     "Esto es el método iniciliazador"
     self.atributo = valor
 
+    
 if __name__ == "__main__":
   objeto = Clase("pepe") # Creo un objeto de la clase Clase
                          # y le paso el valor pepe para su

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import csv
 
 class Calculadora():
 	def plus(lista_int):
@@ -32,10 +33,11 @@ class CalculadoraHija(Calculadora):
 
 
 if __name__ == "__main__":
-	with open(sys.argv[1]) as fichero:
+	with open(sys.argv[1]) as csvarchivo:
+		fichero = csv.reader(csvarchivo)
 		for line in fichero:
-			lista_calc= line.split(",")
-			lista_int = list(map(int, lista_calc[1:]))
+			lista_calc = line
+			lista_int = list(map(int, line[1:]))
 
 			if lista_calc[0] == "suma":
 				result = CalculadoraHija.plus(lista_int)

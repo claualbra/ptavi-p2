@@ -4,29 +4,29 @@
 import sys
 
 class Calculadora():
-	def plus(op1):
+	def plus(lista_int):
 		""" Function to sum the operands. Ops have to be ints """
-		return sum(op1)
+		return sum(lista_int)
 
-	def minus(op1):
+	def minus(lista_int):
 		""" Function to substract the operands """
-		resta = op1[0]
-		for i in op1[1:]:
+		resta = lista_int[0]
+		for i in lista_int[1:]:
 			resta -= i
 		return resta
 
 class CalculadoraHija(Calculadora):
-	def mult(op1):
+	def mult(lista_int):
 		""" Function to multiply the operands. Ops have to be ints """
 		multiplicacion = 1
-		for i in op1:
+		for i in lista_int:
 			multiplicacion *= i
 		return multiplicacion
 
-	def div(op1):
+	def div(lista_int):
 		""" Function to split the operands """
-		division = op1[0]
-		for i in op1[1:]:
+		division = lista_int[0]
+		for i in lista_int[1:]:
 			division /= i
 		return division
 
@@ -35,17 +35,17 @@ if __name__ == "__main__":
 	fd = open(sys.argv[1], mode='r', encoding='utf-8')
 	for line in fd.readlines():
 		lista_calc= line.split(",")
-		op1 = list(map(int, lista_calc[1:]))
+		lista_int = list(map(int, lista_calc[1:]))
 
 		if lista_calc[0] == "suma":
-			result = CalculadoraHija.plus(op1)
+			result = CalculadoraHija.plus(lista_int)
 		elif lista_calc[0] == "resta":
-			result = CalculadoraHija.minus(op1)
+			result = CalculadoraHija.minus(lista_int)
 		elif lista_calc[0] == "multiplica":
-			result = CalculadoraHija.mult(op1)
+			result = CalculadoraHija.mult(lista_int)
 		elif lista_calc[0] == "divide":
 			try:
-				result = CalculadoraHija.div(op1)
+				result = CalculadoraHija.div(lista_int)
 			except ZeroDivisionError:
 				result = "Division by zero is not allowed"
 		else:
